@@ -66,7 +66,7 @@ function createCactus() {
   }, 20);
 
   //Função recursiva
-    /*Recursividade nada mais é mecanismo de programação no qual uma definição de função ou de outro objeto refere-se ao próprio objeto sendo definido */
+  /*Recursividade nada mais é mecanismo de programação no qual uma definição de função ou de outro objeto refere-se ao próprio objeto sendo definido */
   setTimeout(createCactus, randomTime);
 }
 
