@@ -1,0 +1,7 @@
+.dino {
+  width: 60px;
+  height: 60px;
+  background: green;
+  position: absolute; /*Define a forma que o elemento se posiciona no html*/
+  bottom: 0;
+}
