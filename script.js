@@ -1,4 +1,5 @@
-const dino = document.querySelector('.dino');
+const dino = document.querySelector('.dino'); //Pega o background
+const background = document.querySelector('.background'); //Pega o background
 
 function jump() {
     isJumping = true;
@@ -23,4 +24,68 @@ function jump() {
         dino.style.bottom = position + 'px';
       }
     }, 20);
-  }   
+  }
+  
+  function createCactus() {
+    const cactus = document.createElement('div');
+    let cactusPosition = 1000;
+    let randomTime = Math.random() * 6000;
+  
+    if (isGameOver) return;
+  
+    cactus.classList.add('cactus');
+    background.appendChild(cactus);
+    cactus.style.left = cactusPosition + 'px';
+  
+    let leftTimer = setInterval(() => {
+      if (cactusPosition < -60) {
+        // Saiu da tela
+        clearInterval(leftTimer);
+        background.removeChild(cactus);
+      } else if (cactusPosition > 0 && cactusPosition < 60 && position < 60) {
+        // Game over
+        clearInterval(leftTimer);
+        isGameOver = true;
+        document.body.innerHTML = '<h1 class="game-over">Fim de jogo</h1>';
+      } else {
+        cactusPosition -= 10;
+        cactus.style.left = cactusPosition + 'px';
+      }
+    }, 20);
+  
+    setTimeout(createCactus, randomTime);
+  }
+  function createCactus() {
+    const cactus = document.createElement('div');
+    let cactusPosition = 1000;
+    let randomTime = Math.random() * 6000;
+  
+    if (isGameOver) return;
+  
+    cactus.classList.add('cactus');
+    background.appendChild(cactus);
+    cactus.style.left = cactusPosition + 'px';
+  
+    let leftTimer = setInterval(() => {
+      if (cactusPosition < -60) {
+        // Saiu da tela
+        clearInterval(leftTimer);
+        background.removeChild(cactus);
+      } else if (cactusPosition > 0 && cactusPosition < 60 && position < 60) {
+        // Game over
+        clearInterval(leftTimer);
+        isGameOver = true;
+        document.body.innerHTML = '<h1 class="game-over">Fim de jogo</h1>';
+      } else {
+        cactusPosition -= 10;
+        cactus.style.left = cactusPosition + 'px';
+      }
+    }, 20);
+  
+    //Função recursiva
+    /*Recursividade nada mais é mecanismo de programação no qual uma definição de função ou de outro objeto refere-se ao próprio objeto sendo definido */
+    setTimeout(createCactus, randomTime);
+  }
+  
+  createCactus();
+  document.addEventListener('keyup', handleKeyUp);
